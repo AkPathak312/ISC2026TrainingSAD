@@ -32,13 +32,17 @@
             comboBox1 = new ComboBox();
             dataGridView1 = new DataGridView();
             button1 = new Button();
+            menuStrip1 = new MenuStrip();
+            addUserToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(8, 13);
+            label1.Location = new Point(11, 43);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
@@ -48,7 +52,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(8, 41);
+            comboBox1.Location = new Point(8, 61);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(197, 23);
             comboBox1.TabIndex = 1;
@@ -57,10 +61,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(8, 79);
+            dataGridView1.Location = new Point(8, 90);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(729, 267);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
@@ -74,6 +79,29 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { addUserToolStripMenuItem, exitToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(753, 24);
+            menuStrip1.TabIndex = 4;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // addUserToolStripMenuItem
+            // 
+            addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
+            addUserToolStripMenuItem.Size = new Size(67, 20);
+            addUserToolStripMenuItem.Text = "Add User";
+            addUserToolStripMenuItem.Click += addUserToolStripMenuItem_Click;
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(37, 20);
+            exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -83,11 +111,15 @@
             Controls.Add(dataGridView1);
             Controls.Add(comboBox1);
             Controls.Add(label1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Margin = new Padding(2);
             Name = "Dashboard";
             Text = "Dashboard";
             Load += Dashboard_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -98,5 +130,8 @@
         private ComboBox comboBox1;
         private DataGridView dataGridView1;
         private Button button1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem addUserToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
     }
 }

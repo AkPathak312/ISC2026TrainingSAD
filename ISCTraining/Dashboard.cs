@@ -20,6 +20,7 @@ namespace ISCTraining
         {
             InitializeComponent();
             this.username = username;
+            GlobalUtil.email = username;
             db = new AmioncDbContext();
         }
 
@@ -55,6 +56,19 @@ namespace ISCTraining
             //Making sure rows is slected instead of cell.
             dataGridView1.MultiSelect = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            //Adding Action Column
+            if (!dataGridView1.Columns.Contains("Action"))
+            {
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                btn.Name = "Action";
+                btn.HeaderText = "Action";
+                btn.Text = "Edit User";
+                btn.UseColumnTextForButtonValue = true;
+
+                dataGridView1.Columns.Add(btn);
+            }
+
         }
 
         private void LoadCombobox()
@@ -104,6 +118,33 @@ namespace ISCTraining
             u.Active = !u.Active;
             db.SaveChanges();
             LoadUsers((int)comboBox1.SelectedValue);
+        }
+
+        private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddUser form = new AddUser(0);
+            form.Show();
+            this.Hide();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            if (dataGridView1.Columns[e.ColumnIndex].Name != "Action")
+                return;
+
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            int userId = (int)row.Cells["Id"].Value;
+            AddUser form = new AddUser(userId);
+            form.Show();
+            this.Hide();
         }
     }
 }

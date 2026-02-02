@@ -68,6 +68,8 @@ namespace ISCTraining
             countdownTimer.Tick += countdownTimerFunction;
             countdownTimer.Start();
             competitionDate = new DateTime(2026, 02, 25);
+            textBox1.Text = "j.doe@amonic.com";
+            textBox2.Text = "123";
         }
 
         private void countdownTimerFunction(object? sender, EventArgs e)
