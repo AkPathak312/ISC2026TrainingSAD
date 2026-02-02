@@ -23,7 +23,8 @@ namespace ISCTraining
 
         private void button1_Click(object sender, EventArgs e)
         {
-            User u = db.Users.Where(x=> x.Email == textBox1.Text && x.Password == textBox2.Text).FirstOrDefault();
+            String hashedPass = GlobalUtil.HashPassword(textBox2.Text);
+            User u = db.Users.Where(x=> x.Email == textBox1.Text && x.Password == hashedPass).FirstOrDefault();
             if (u!=null)
             {
                 Dashboard form = new Dashboard(textBox1.Text);

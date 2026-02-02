@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -87,7 +88,7 @@ namespace ISCTraining
                 u.Email = textBox1.Text;
                 u.FirstName = textBox2.Text;
                 u.LastName = textBox3.Text;
-                u.Password = textBox4.Text;
+                u.Password = GlobalUtil.HashPassword(textBox4.Text);
                 u.OfficeId = (int)comboBox1.SelectedValue;
                 u.Birthdate = DateOnly.FromDateTime(dateTimePicker1.Value);
                 if(userId == 0)
@@ -109,5 +110,7 @@ namespace ISCTraining
             }
 
         }
+
+        
     }
 }
