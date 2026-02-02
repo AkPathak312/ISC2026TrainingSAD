@@ -29,26 +29,65 @@
         private void InitializeComponent()
         {
             label1 = new Label();
+            comboBox1 = new ComboBox();
+            dataGridView1 = new DataGridView();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 24);
+            label1.Location = new Point(8, 13);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(59, 25);
+            label1.Size = new Size(38, 15);
             label1.TabIndex = 0;
             label1.Text = "label1";
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(8, 41);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(197, 23);
+            comboBox1.TabIndex = 1;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(8, 79);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(729, 267);
+            dataGridView1.TabIndex = 2;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(12, 363);
+            button1.Name = "button1";
+            button1.Size = new Size(101, 23);
+            button1.TabIndex = 3;
+            button1.Text = "Enable/Diable User";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Dashboard
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(753, 398);
+            Controls.Add(button1);
+            Controls.Add(dataGridView1);
+            Controls.Add(comboBox1);
             Controls.Add(label1);
+            Margin = new Padding(2);
             Name = "Dashboard";
             Text = "Dashboard";
             Load += Dashboard_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -56,5 +95,8 @@
         #endregion
 
         private Label label1;
+        private ComboBox comboBox1;
+        private DataGridView dataGridView1;
+        private Button button1;
     }
 }

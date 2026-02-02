@@ -1,3 +1,5 @@
+using ISCTraining.Models;
+
 namespace ISCTraining
 {
     public partial class Form1 : Form
@@ -7,16 +9,22 @@ namespace ISCTraining
         System.Windows.Forms.Timer loginTimer;
         System.Windows.Forms.Timer countdownTimer;
         DateTime competitionDate;
+        AmioncDbContext db;
         public Form1()
         {
             InitializeComponent();
+            //Timer for Login Lock
             loginTimer = new System.Windows.Forms.Timer();
+
+            //Timer for Countdown
             countdownTimer = new System.Windows.Forms.Timer();
+            db= new AmioncDbContext();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "admin" && textBox2.Text == "pass")
+            User u = db.Users.Where(x=> x.Email == textBox1.Text && x.Password == textBox2.Text).FirstOrDefault();
+            if (u!=null)
             {
                 Dashboard form = new Dashboard(textBox1.Text);
                 form.Show();
@@ -60,7 +68,6 @@ namespace ISCTraining
             countdownTimer.Tick += countdownTimerFunction;
             countdownTimer.Start();
             competitionDate = new DateTime(2026, 02, 25);
-            //competitionDate = new DateTime(5 * 60 * 1000);
         }
 
         private void countdownTimerFunction(object? sender, EventArgs e)
